@@ -1,0 +1,726 @@
+---
+output:
+  xaringan::moon_reader:
+    css: [default, "VictoriaUniversity.css", "VictoriaUniversity-fonts.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9 
+      beforeInit: "https://platform.twitter.com/widgets.js"
+---
+class: title-slide
+background-image: url(images/Stadium.jpg)
+background-size: cover 
+.center[
+<br>
+# R You Curious About Your Data?
+
+## Alice Sweeting, PhD  
+
+#### AIS Movement Science Forum <br> 19th November, 2020
+]
+<br> 
+<img class="logoposRB", src="VU_iHES.png", width=20%>
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, knitr.table.format = "html")
+knitr::opts_chunk$set(fig.retina = 3, warning = FALSE, message = FALSE)
+library(tidyverse) 
+library(fontawesome)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("editable", "animate_css", "tachyons"))
+```
+
+---
+class: inverse, right, bottom
+background-image: url(https://www.yarracity.vic.gov.au/-/media/all-images/yarra-city-council-images/events/events-2020/january/_bpp9388.jpg)
+background-size: cover
+
+.right[
+.caption[
+Image source: [Yarra City Council](https://aboriginalhistoryofyarra.com.au/)
+]]
+
+???
+
+I’d like to begin by acknowledging the Traditional Owners of the land on which we meet today, which for me in Richmond, Victoria, are the Wurundjeri-willam people of the Kulin Nation. I also wish to pay my respects to Elders past, present and emerging. Pictured is the beautiful Birrarung.
+
+---
+class: left, bottom, inverse
+background-image: url(images/Basketball2.jpg)
+background-size: cover
+# In This Workshop We Will Cover...
+
+--
+.large[
+* Different Data Sources, Programs & Structures
+]
+<br>
+--
+.large[
+* Programming for Movement Science
+]
+<br>
+--
+.large[
+* Adaptive Tools for Movement Science
+]
+<br>
+--
+.large[
+* Example of Analysing SportsCode Data in R
+]
+<br>
+--
+.large[
+* Interactive Chat about Workflows
+]
+
+---
+class: left, top
+# Data Sources (in Australian Football)
+
+### `r fa("question-circle", fill = "black")` [Monitor how an athlete rates their perceived exertion from a training session.](https://journals.humankinetics.com/view/journals/ijspp/12/2/article-p230.xml)
+--
+<br>
+### `r fa("laptop-code", fill = "black")` [Detect biomechanical characteristics, using wearable technology, during skilled actions.](http://vuir.vu.edu.au/39871/1/icSPORTS_2019_15.pdf)
+--
+<br>
+### `r fa("running", fill = "black")` [Collect an athlete's physical output during training and matches.](https://shapeamerica.tandfonline.com/doi/abs/10.1080/02640414.2019.1577941#.X2RNLWgzaUk)
+--
+<br>
+### `r fa("football-ball", fill = "black")` [Record the number of skilled involvements during drills and matches.](https://www.sciencedirect.com/science/article/abs/pii/S0167945719301939)
+--
+<br>
+### `r fa("users", fill = "black")` [Quantify the interactions between team-members during training and matches.](https://www.tandfonline.com/doi/abs/10.1080/02640414.2019.1586077)
+--
+<br>
+### `r fa("chart-line", fill = "black")` [Track the performance of potential recruits and draft selections.](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0220901)
+--
+<br>
+### `r fa("utensils", fill = "black")` [Estimate the energy expenditure of athletes during training and matches.](https://www.sciencedirect.com/science/article/abs/pii/S1440244015000390)
+
+---
+class: center, top
+# What Programs Do You Currently Use to Catpure Data?
+
+.can-edit.key-likes[
+
+]
+
+---
+class: center, top
+# SportsCode
+
+<img src="images/3 data structures in Hudl.png", align="middle", width="120%">
+
+---
+class: center, top
+# SportsCode
+
+<img src="images/sophisticated output window.png", align="middle", width="100%">
+
+---
+class: center, top
+# SportsCode 
+
+<img src="images/Hudl_window.png", align="middle", width="90%">
+
+---
+class: center, top
+# What Programs Do You Currently Use to Analyse Your Data?
+
+.can-edit.key-likes[
+
+]
+
+---
+class: left, top, inverse
+background-image: url(images/Basketball2.jpg)
+background-size: cover
+# Data Analysis & Programming Languages
+
+---
+
+class: center, top
+
+# Advantages of Excel for Data Analysis
+
+.left[
+* Easy to download, install, open.
+]
+
+--
+.left[
+* Interactive, (fairly) friendly to save, send, open and edit
+]
+--
+.left[
+* Point and click to enter data, create figures, calculate math
+]
+--
+.left[
+* Many tabs = data entry, analysis, visualisation, (dashboard) reporting
+]
+--
+.left[
+* Can even run (basic to advanced) statistics! See [Analysis ToolPak](https://support.microsoft.com/en-us/office/use-the-analysis-toolpak-to-perform-complex-data-analysis-6c67ccf0-f4a9-487c-8dec-bdb5a2cefab6)
+]
+
+???
+* This includes ANOVAS, regression, exponential smoothing, moving averages, t-tests etc
+
+
+--
+.left[
+* Help is never far away...
+]
+ 
+<img src="https://media.giphy.com/media/eCz0zwSl7qxB6/giphy.gif" width="40%", align="middle"/>
+
+---
+
+class: center, top
+
+# But before long...
+
+<img src="https://media.giphy.com/media/l1IY5NRhxdCJYxsmA/giphy.gif" align="middle" width="85%%"/>
+
+---
+
+class: center, top
+
+# We end up here!
+
+<img src="https://raw.githubusercontent.com/SportStatisticsRSweet/WCSF_WorkshopInR/master/Figures/ExcelStoppedWorking.png" align="middle" width="75%"/>
+
+.footnote[
+Credit: [**Dr Jacquie Tran, ESSA Forum, 2019**](https://github.com/jacquietran/2019_essa_forum)
+]
+
+---
+class: left, top
+.center[
+# If You Do Use A Spreadsheet Program for Data Analysis...
+]
+* Ensure you are consistent
+???
+* This includes coding categorical data the same (so male and female, not male and m, female and f)
+* Use a consistent code for missing data, rather than leaving it blank AND highlighting the cell AND/OR writing NA
+* Be careful with extra white spaces, mixing date types and creating easy to interpret row/ column headers
+--
+<br>
+<br>
+* Put only one thing in a cell
+???
+* Put one piece of data in a cell
+* Try and use the same units in columns
+* Don't merge cells (looks pretty) but really isn't very functional & very messy when exporting
+--
+<br>
+<br>
+* Treat raw data as *exactly* that, raw data!
+???
+* Keep raw data separate, preferably in another document appropriately labelled
+* If you do keep raw data in the same workbook, put it in another tab and lock the tab from editing
+---
+class: left, top
+.center[
+# If You Do Use A Spreadsheet Program for Data Analysis...
+]
+.pull-left[
+* Ensure you are consistent
+<br>
+<br>
+* Put only one thing in a cell
+<br>
+<br>
+* Treat raw data as *exactly* that, raw data!
+<br>
+<br>
+* Try and keep data in a rectangle, tidy fashion
+]
+.pull-right[
+<img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/tidydata_2.jpg" align="middle" width="120%"/>
+<br>
+<br>
+.small[Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst]]
+
+
+???
+* A single big rectangle with rows corresponding to subjects and columns corresponding to variables.
+* The first row should contain variable names, and please do not use more than one row for the variable names.
+* Sometimes you need to make different Excel files, to fit tidy data
+* Often, people have bits of data sprinkled around, including summary statistics next to their raw data!
+
+---
+class: center
+<img src="https://www.tandfonline.com/na101/home/literatum/publisher/tandf/journals/content/utas20/2018/utas20.v072.i01/00031305.2017.1375989/20180424-01/images/large/utas_a_1375989_f0005_b.jpeg" align="middle" width="80%"/>
+<br>
+<br>
+.small[
+[Karl W. Broman & Kara H. Woo (2018) Data Organization in Spreadsheets, The American Statistician, 72:1, 2-10, DOI: 10.1080/00031305.2017.1375989](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989)
+]
+---
+class: center
+
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_1.jpg" align="middle" width="90%"/>
+<br>
+<br>
+.small[
+Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst
+]
+---
+class: left, top
+.center[
+# If You Do Use A Spreadsheet Program for Data Analysis
+]
+* Ensure you are consistent
+<br>
+<br>
+* Put only one thing in a cell
+<br>
+<br>
+* Treat raw data as *exactly* that, raw data!
+<br>
+<br>
+* Try and keep data in a rectangle, tidy fashion
+<br>
+<br>
+* Create a data dictionary
+
+???
+- This is a seperate file that explains what all the variables are within your data set
+- This also includes the measurement units (etc cm versus m)
+- Ideally, you accompany this with another file that includes information about your data and workflow
+
+---
+class: center
+<br>
+<img src="https://www.tandfonline.com/na101/home/literatum/publisher/tandf/journals/content/utas20/2018/utas20.v072.i01/00031305.2017.1375989/20180424-01/images/large/utas_a_1375989_f0009_b.jpeg" align="middle" width="90%"/>
+<br>
+<br>
+.small[
+[Karl W. Broman & Kara H. Woo (2018) Data Organization in Spreadsheets, The American Statistician, 72:1, 2-10, DOI: 10.1080/00031305.2017.1375989](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989)
+]
+
+---
+class: left, top
+.center[
+# If You Do Use A Spreadsheet Program for Data Analysis
+]
+.pull-left[
+* Ensure you are consistent
+<br>
+<br>
+* Put only one thing in a cell
+<br>
+<br>
+* Treat raw data as *exactly* that, raw data!
+<br>
+<br>
+* Try and keep data in a rectangle, tidy fashion
+<br>
+<br>
+* Create a data dictionary
+<br>
+<br>
+* Create backups (saved in plain text files)
+<br>
+<br>
+.small[
+[Karl W. Broman & Kara H. Woo (2018) Data Organization in Spreadsheets, The American Statistician, 72:1, 2-10, DOI: 10.1080/00031305.2017.1375989](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989)
+]
+]
+--
+.pull-right[<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_7.jpg" width="100%"/>
+<br>
+.small[
+Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst
+]]
+
+
+---
+
+class: center, top
+
+# Working with Data in Analytics
+
+.left[
+* Abundance of data, from varying technologies at differing sample rates, stored in multiple formats.
+]
+--
+.left[
+* Large datasets, that often need cleaning and merging, which is likely performed manually.
+]
+--
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_3.jpg" align="middle" width="60%"/>
+<br>
+.small[
+Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst
+]
+
+???
+* This may even include for yourself, so you know what you did (and workflow) in one week, month, years time
+
+
+---
+class: center, top
+# Programming Languages
+.center[
+<img src="https://www.openscapes.org/img/blog/tidydata/tidydata_5.jpg" align="middle" width="70%"/>
+]
+<br>
+.small[
+Illustration from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst
+]
+
+???
+* Easier for automation & iteration!
+* Create a project, run analysis, create a dashboard and/ or report 
+* Automate reporting processes in .pdf or .html output
+
+---
+class: center, bottom, inverse
+background-image: url(https://www.houseofbots.com/images/news/4525/cover.png)
+background-position: center
+background-size: contain, 70% 70%, cover
+<br>
+<br>
+<br>
+<br>
+<br>
+Image from House of Bots
+
+---
+class: center, top
+# Programming for Analytics & Sport Science
+
+<img src="https://www.mathworks.com/company/newsletters/articles/the-mathworks-logo-is-an-eigenfunction-of-the-wave-equation/_jcr_content/mainParsys/image_2.adapt.480.high.gif/1469941373397.gif" align="middle"/>
+.small[Logo from MathWorks]
+
+???
+- Matlab is regarded as a commerical computing environment and a programming language
+- Has a standard libary (similar to Python) and a large network for data processing and plotting
+- Variety of toolboxes that are available, although these come at a cost
+- Tables and graphs are easy to create and manipulate, which also makes them friendly to the layperson
+- Unfortunately, the code can be difficult to read and the use of indentation I find a bit clumsy
+- Matlab also is not free and open, so if you learn Matlab in one setting/ organisation, you rely on it being available (to purchase) when you move
+- Developers of Matlab typically do not encourage input suggestions for software, as opposed to R and Python which is community based
+
+---
+class: center, top
+# Programming for Analytics & Sport Science
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/SPSS_logo.svg/1200px-SPSS_logo.svg.png" align="middle" width="40%"/>
+<br>
+.small[Logo from SPSS]
+
+???
+- SPSS is great for the point and click style of interaction with a program interface, where you can manually select your analysis
+- Can handle bigger datasets and the menu driven nature make it very similar to Excel
+- However, manual cleaning of datasets are required by the user
+- Comes with many packages installed that are great for learnign analytics, as an introductory stepping stone
+- However, requires a licence and given the style of coding is a little different, I think it has its place but there are better tools
+
+---
+class: center, top
+# Programming for Analytics & Sport Science
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/SAS_logo_horiz.svg/1280px-SAS_logo_horiz.svg.png" align="middle" width="40%"/>
+<br>
+.small[Logo from SAS]
+
+???
+- SAS is very popular and has been around for some time in the analytical world
+- A big plus is the number of cases it can handle, which is really limited by your machine
+- Also a cloud version available that is quite good at handling very large datasets
+- Biggest learning curve is the specific programming language that it uses and can take some time to even learn how to import data
+- Need to understand the underlying code principles, which can be a barrier to entry
+- No OS restrictions although reading the error log was a big challenge for me! Also very easy to make mistakes by forgetting a single symbol
+- Hard to grasp if you are attemping with no background in computer programming and I've found googling the error messages difficult too
+- Biggest barrier to entry for me is the license and lack of available packages for cleaning and tidying, relative to R and Python
+
+---
+class: center, top
+# Programming for Analytics & Sport Science
+
+<img src="https://www.python.org/static/community_logos/python-logo-inkscape.svg" align="middle" width="120%"/>
+
+<br>
+.small[Logo from Python.org]
+
+???
+- Python is widely used by data scientists and engineers around the world. Also a popular introductory language
+- Code is fairly straightforward to read and supported by open-source communities, with suggestion encouraged for improvements to the software
+- Great at using data dictionaries to drive analysis. For example, creating a data dictionary of skilled actions in Australian Football and looking up skilled actions in an untidy, messy format.
+- Python is free, open-source and has fantastic data visualisation capabilities
+- You don't have to be a programmer to program in Python 
+- However, the error messages can be really annoying to understand, particuarly when dealing with large volumes of code/ data
+
+---
+class: center, top
+# Programming for Analytics & Sport Science
+
+<img src="https://www.r-project.org/logo/Rlogo.svg" align="middle" width="50%"/>
+
+.small[Logo from R Project.org]
+
+???
+- R, like Python, is free and open-source. 
+- Relies on the community to create, push and debug packages that can handle all parts of the data import, tidying, analysing, visualising & reporting process
+- Developed with statistics in mind, which it does super well.
+- Has a whole host of tools to deal with the data pipeline, called the tidyverse
+- Highly flexible software that can run on any operating system
+- RStudio has a whole host of features, including GitHub integration and the ability to run Python code inside of R
+- Personally, I found R easier to get started in and the community very welcoming to help with debugging. Therefore, I think it is great to use for movement science
+- I still use Python for really specific things like above and work with many colleagues who use Python
+
+---
+class: center, top
+
+<img src="https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/r_rollercoaster.png" align="middle"/>
+
+
+---
+class: center, top
+# Other Tools for Analytics & Sport Science
+
+.pull-left[
+<img src="https://www.tableau.com/sites/default/files/pages/tableau_cmyk_2015.png" />
+<br>
+.small[Logo from Tableau]
+]
+.pull-right[<img src="https://dotnet.microsoft.com/blob-assets/images/customers/power-bi.png"/>
+<br>
+.small[Logo from Microsoft]
+]
+
+<img src="https://miro.medium.com/max/1200/1*Oe7xavCj5qCBzwTbLDbPTg.jpeg" align="middle" width="40%"/>
+.small[Logo from Medium]
+
+
+???
+- Structured Query Language is a domain-specific language used in programming and designed for managing data held in a relational database management system.
+- Accesses many records with one single command and eliminates the need to specify how to reach the record
+- Contains many statements, that focus on querying, definitions, data control and manipulation
+- These elements include clauses, expressions, predicates, queries and statements
+- Insignificant whitespace is generally ignored in SQL
+- Used for interacting with a database for extracting data, updating data, replacing data, creating data
+- Typically used when you have data hosted in servers, that are large 
+- I've used SQL queries on a data.frame, that has been extracted into R. There are a number of different packages that help with this.
+
+
+---
+class: left, bottom, inverse
+background-image: url(images/Laptop.jpg)
+background-size: cover
+# Adaptability & Versatility for Movement Science
+
+* Technical computation skills - including programming languages for automation & transparency
+
+???
+* Learning a programming language can help with reproducibility, automation and transparency of workflows.
+* Working with data from so many sources, creating visualisations and reports can all be done in programming languages
+
+--
+
+* Computational Thinking -  Take a complex problem, understand what the problem is and develop possible solutions, for computers and humans or both.
+<br>
+<br>
+.small[See: Professor Sam Robertson (2020) Man & machine: Adaptive tools for the contemporary performance analyst, <br> Journal of Sports Sciences, 38:18, 2118-2126, DOI: 10.1080/02640414.2020.1774143]
+
+???
+* Along with acquiring these technical computational skills, via learning a program language, movement scientists can also become adaptable by adopting computational thinking
+* This refers to the “thought processes involved in formulating a problem and expressing its solution(s) in such a way that a computer – human or machine, can effectively carry out” (Wing, 2014). Computation has joined theory and experimentation as the third recognised pillar of science
+* Encourages logical organisation of data, abstractions and pattern recognition, reformulating problems, process efficiency and automation.
+* A major benefits is that the method typically provides a multitude of solutions to the same problem. 
+* Let's examine this by digging deeper into a problem, with many solutions, using the one dataset
+
+---
+class: center, middle
+
+# How does skilled and physical output change, as a function of time, during an AF match?
+
+---
+class: center, top
+# Raw Physical Output Data
+
+<img src="images/RawTrace.png" align="middle" width="70%"/>
+
+???
+* Capture the raw trace from a wearble sensor (here is GPS)
+* Analysing continious trace data can help to give us more insight into the why part of athlete physical output
+* This trace data could be from LPS, GPS or optical. We could also look at raw accelerometer data too
+* Here we have time on our x-axis and velocity on our y-axis, giving us a visual into an athlete's "active" time spent on the ground
+
+---
+class: center, top
+# Raw Physical Output Data
+
+<img src="images/RawTrace_Bands.png" align="middle" width="70%"/>
+
+
+???
+* Logical extension to seperate activity into low and high-intensity
+* Thresholds used are often arbitary 
+* Difficult to determine how output changes throughout a team-sport match, as a function of time
+
+---
+class: center, top
+# Exported Skilled Data
+
+<img src="images/EditList.png" align="middle" width="200%"/>
+
+
+---
+class: center, top
+# Aggregate Skilled Data
+
+```{r CreateSkillTable, echo = FALSE}
+library(kableExtra)
+SkilledData <- data.frame(Action = c("Kick Short", "Kick In Short", "Tackle", "Handball Effective", "Kick Ineffective"), 
+                             'Action Type' = c("Offensive", "Offensive", "Defensive", "Offensive", "Offensive"),
+                             'Granular' = c("Kick", "Kick", "Tackle", "Handball", "Kick"),
+                             'Symbol' = c("KE", "KE", "T", "HE", "KI"), 
+                             'Location' = c("Defensive Midfield", "Defensive", "Attacking Midfield", "Attacking Midfield", "Forward"), 
+                             'Role' = c("Inside Mid", "Defender", "Defender", "Inside Mid", "Forward"), 
+                             'Quarter' = c("Q1", "Q1", "Q1", "Q1", "Q1"),
+                             'Time' = c("00:00:18:30", "00:00:45:00", "00:00:58:21", "00:01:01:00", "00:01:31:26"))
+SkilledData %>%
+  kable("html", escape = T, booktabs = F, align = "c",
+  digits = 0, table.attr = "style = \"color: black;\"")%>%
+  kable_styling(position = "center", font_size = 25, bootstrap_options = c("responsive","bordered"))%>%
+  row_spec(0, bold = T, color = "white", background = "#000000", extra_css = "border-right: 1px solid; padding: 15px")  #%>%
+  #column_spec(1:6, border_left = T, border_right = T)  %>%
+  #row_spec(nrow(DrillEventData), color = "black", extra_css = "border-bottom: 1px solid")
+```
+
+---
+class: center, top
+# Aggregate Physical & Skilled Output Data
+
+```{r CreateCombinedTable, echo = FALSE}
+library(kableExtra)
+DrillEventData <- data.frame(Period = c("Q1", "Q2", "Q3", "Q4"), 
+                             'Total Duration (mins)' = c(21, 20, 25, 23),
+                             'Total Distance (m)' = c(3026, 2875, 3149, 2821),
+                             'Total HIR (m)' = c(1130, 1014, 1049, 1121), 
+                             'Total Skilled Involvements' = c(10, 8, 3, 9))
+DrillEventData$`Metres per Min (m/min)` <- DrillEventData$Total.Distance..m./DrillEventData$Total.Duration..mins.
+colnames(DrillEventData) <- c("Period", "Total Duration (mins)", "Total Distance (m)", 
+                              "Total HIR (m)", "Total Skilled Involvements", "Metres per Min (m/min)")
+DrillEventData %>%
+  kable("html", escape = T, booktabs = T, align = "c",
+  digits = 0, table.attr = "style = \"color: black;\"")%>%
+  kable_styling(position = "center", font_size = 25, bootstrap_options = c("responsive","bordered"))%>%
+  row_spec(0, bold = T, color = "white", background = "#000000", extra_css = "border-right: 1px solid; padding: 15px")  %>%
+  #column_spec(1:6, border_left = T, border_right = T)  %>%
+  row_spec(nrow(DrillEventData), color = "black", extra_css = "border-bottom: 1px solid")
+```
+
+???
+* These parameters can help give insight into specific drills, training as a whole and help to evaluate training sessions
+* (Click to show link) we can also use aggregate data to cluster drills based on these physical outputs, into high/ medium/ low intensity categories
+* Aggregate parameters don't give granular insights into physical output
+* Difficult to determine when output changes over time
+
+---
+class: center, top
+# 1. Modelling Aggregate Physical & Skilled Output Data
+
+<img src="https://www.frontiersin.org/files/Articles/294557/fphys-08-00820-HTML/image_m/fphys-08-00820-t002.jpg" align="middle" width="60%"/>
+<br>
+<br>
+<br>
+.small[See: Corbett DM, Sweeting AJ and Robertson S (2017) Weak Relationships between Stint Duration, Physical and Skilled Match Performance in Australian Football. <br> Front. Physiol. 8:820. doi: 10.3389/fphys.2017.00820]
+
+???
+- here we have Generalized linear mixed models which allow for the quantification of independent and dependent variables with repeated measures
+- A random intercept model was built to identify how skilled output changes, as a function of the other parameters, across the team. Involvements per and duration were the dependent and independent variables, respectively. 
+- Bench time, meterage per minute, high intensity running per minute and very high intensity running per minute were added to the model sequentially,
+- Also a random slope model was built for each player using the remaining parameters
+- The coefficients for the random intercept model are presented here with a 95% CI
+
+---
+class: center, top
+# 2. Using Conditional Inference Trees 
+
+<img src="https://www.frontiersin.org/files/Articles/294557/fphys-08-00820-HTML/image_m/fphys-08-00820-g005.jpg" align="middle" width="65%"/>
+<br>
+<br>
+.small[See: Corbett DM, Sweeting AJ and Robertson S (2017) Weak Relationships between Stint Duration, Physical and Skilled Match Performance in Australian Football. <br> Front. Physiol. 8:820. doi: 10.3389/fphys.2017.00820]
+
+???
+- Here we have a conditional inference tree in this study removed player, in an attempt to generate a broad set of team rules
+- These trees are present an alternative, non-linear option to quantify the relationship between physical, skilled and temporal outputs
+- A series of significance tests to create thresholds for each dependent variable
+- These thresholds create branches in the tree, each consisting of differing combinations of dependent variables, which then leads to a prediction of the independent variable. 
+- In this figure, only meterage per minute and stint time were selected, in an attempt to generate a broad set of team rules. This model set six major partitions for skilled involvement. This ranged from high physical output, but a mixed skilled output, to a low physical and low skilled output
+- In this playing group, a high intensity (>172 m·min−1), or, a moderate intensity (125–172 m·min−1) and moderate duration (<19.75 min) leads to a higher skilled output
+
+
+---
+class: center, top
+# 3. Understanding the Influence of Time
+
+<img src="https://shapeamerica.tandfonline.com/na101/home/literatum/publisher/tandf/journals/content/rjsp20/2019/rjsp20.v037.i14/02640414.2019.1577941/20190611/images/large/rjsp_a_1577941_f0001_oc.jpeg" align="middle" width="70%"/>
+<br>
+.small[See: David M. Corbett, Alice J. Sweeting & Sam Robertson (2019) A change point approach to analysing the match activity profiles of team-sport athletes, <br> Journal of Sports Sciences, 37:14, 1600-1608, DOI: 10.1080/02640414.2019.1577941]
+
+???
+- We have described physical and skilled output in an aggregate sense, via modelling and conditonal inference trees
+- However the degree to which these output change throughout a team-sport match, as a function of time, is relatively unknown. There are likely periods of altered physical and skilled output that are not captured by aggregate parameters
+- By inference it is therefore problematic to use measures of physical and skilled output to inform decisions whereby time is expected to exert an influence
+- Here is the same data type, raw LPS or GPS data and skilled output, analysed as a time series
+- Blue and red circles indicate offensive and defensive skilled involvements, respectively. Fixed vertical lines denote change point location, for a single player across a single match. Players names are deidentified so we have a), b), c) and d) etc
+- The physical output of team-sport athletes was split into between two and 16 segments and then summarised each of these segments using spectral features and a measure of skilled output
+- Each of these segments was categorised by data points with a different mean or variance, compared to the previous or subsequent segment
+- These segments varied in their location and duration between players and had only a small relationship with on-field stint end time. This highlights the importance of analysing velocity data as a time series, as aggregating across quarters or on-field stints may not be sufficient when analysing changes in physical output. Aggregate across three or five minute periods and this granulairty may be lost.
+- Skilled output, measured through match involvements, showed no clear differences between segments. Consequently, they were the weakest features in the random forest model for classification. This highlights the dynamic nature of skilled actions in AF. Skilled output can be affected by many factors including the strategy of the opposing team, player roles, team composition and team form
+- The methods utilised in this study could also be applied in sports where pacing is a key strategy. In track cycling, for example, the ability of athletes to increase or decrease their velocity at crucial moments in an event is a key strategic consideration
+
+---
+class: right, bottom, inverse
+background-image: url(images/SoccerBall.jpg)
+background-size: cover
+# Do you have any questions?
+
+
+---
+name: break
+class: right, bottom, inverse
+background-image: url(images/CoffeeBreak.jpg)
+background-size: cover
+# Break
+
+
+---
+class: bottom, hide_logo
+background-image: url(https://pbs.twimg.com/media/EiPx8D4VgAEA2Z1.jpg)
+background-size: cover
+
+.right[
+.caption[
+Image source: [Suncorp Super Netball](https://twitter.com/SuperNetball/status/1307154470539636737)
+<br>
+Ball Artwork © Simone Thomson <br> Yorta-Yorta/Wurundjeri
+]]
+
+
+---
+class: right, bottom, inverse
+background-image: url(images/Challenges.jpg)
+background-size: cover
+
+---
+class: right, bottom, inverse
+background-image: url(images/GradCertSportData_GIF.gif)
+background-size: cover
+
+
+
