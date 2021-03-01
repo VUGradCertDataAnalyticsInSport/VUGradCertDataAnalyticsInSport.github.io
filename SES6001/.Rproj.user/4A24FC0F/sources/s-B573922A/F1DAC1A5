@@ -3,7 +3,7 @@
     "path": "~/Documents/GitHub/VUSportData/SES6001/Session4_MeasurementTheoryTechnologies.Rmd",
     "project_path": "Session4_MeasurementTheoryTechnologies.Rmd",
     "type": "r_markdown",
-    "hash": "1268012880",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1614583372135.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "258,49",
-        "scrollLine": "231"
+        "cursorPosition": "413,0",
+        "scrollLine": "385"
     },
     "folds": "",
-    "lastKnownWriteTime": 1614599741,
+    "lastKnownWriteTime": 1614600082,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1614599741043,
+    "last_content_update": 1614600082107,
     "read_only": false,
     "read_only_alternatives": []
 }

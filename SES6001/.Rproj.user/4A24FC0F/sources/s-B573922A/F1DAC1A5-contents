@@ -401,3 +401,23 @@ class: top, center
 
 ]
 ]
+
+---
+class: top, right, inverse
+background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/p-424-felix-2081-01.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=41442fa35c9237cacc9fdd0d31f4db16)
+background-size: fill 
+.NonVU[
+## Test Your Knowledge
+]
+
+--
+
+.NonVU[
+## Searching for Sports Analytics Technologies/ Data Sources
+]
+
+--
+
+.NonVU[
+## Assessment 2
+]
