@@ -322,6 +322,9 @@ background-size: cover
 
 .small[.left[.bottom[Image source: Catapult Sports]]]
 
+???
+- Over more than a decade, Global Positioning System (GPS)-based wearable-tracking devices have been widely used to monitor outdoor training allowing a better understanding of the physical requirements of sport while being less time-consuming than traditional time-motion analysis
+- these devices provide for real-time movement analysis and feedback that can be directly incorporated into the training regime. Nevertheless, the use of GPS-based devices presents certain limitations: a) they cannot be used indoors [3], and b) questionable validity and reliability to accurately assess short, high-intensity movements due to its low sampling rate (1–10 Hz)
 
 ---
 class: top, center
@@ -331,6 +334,11 @@ class: top, center
 
 .citation[Image source: Kinexon]
 
+???
+- Good validity and reliability, especially for indoor venues
+- Still requires physical wearing of a unit and for the court/ playing area to be mounted with anchor nodes or localised stations that transmit radio-frequency signals.
+- These anchor stations can be setup locally, but surveying and mapping the area (etc, conducting a survey using a highly precise tool, to measure known boundaries of the court or playing area) takes time
+
 ---
 class: top, center
 # Optical Tracking Systems
@@ -338,6 +346,11 @@ class: top, center
 <img src= "https://s.wsj.net/public/resources/images/BN-OJ880_Second_J_20160608122233.jpg", align="middle", width="75%">
 
 .citation[Image source: Second Spectrum]
+
+???
+- multi-camera systems that use image-processing techniques (i.e., motion capture) to determine the position of an athlete within a particular physical space. 
+- This approach is desirable because it is less invasive to the athlete as it does not require the use of a wearable device. Advances in computer processing (e.g., software algorithms and hardware) continue to make this approach more and more desirable, 
+- but the currently available systems suffer from two limitations: a) their use is generally confined to indoor sports because tracking accuracy depends upon the size of the physical space, and b) these systems require post-event processing to accurately determine player position.
 
 ---
 class: top, center
@@ -347,13 +360,45 @@ class: top, center
 
 .citation[Image source: Indemic]
 
+???
+- wearable, acceleration-based tracking devices that incorporate microelectromechanical systems (MEMS) gyroscopes, magnetometers, and accelerometers into a single player-worn unit
+- The devices utilize tri-axial accelerometers that are not positional based, but movement based (anterior-posterior, medial-lateral, and vertical) [5], to obtain descriptors of sports activities, such us accelerations, decelerations, jumps, change of direction or other accelerometer-derived measurements
+- One such derived measurement is the PlayerLoad™ (Catapult Innovations, Melbourne, Australia), which is used to describe and quantify an athlete’s external workload
+- The reliability of the accelerometer is acceptable both within and between devices under controlled laboratory conditions, and between devices during field testing. 
+- Accelerometers can be confidently utilized as a reliable tool to measure physical activity in team sports across multiple players and repeated bouts of activity
+- Limitation for sports analytics is their lack of positional information, so unable to track athlete/ team-mate/ opponent etc relative to court or field of interest
+
 ---
 class: top, center
-# Manual Event Detection
+# Notational Analysis & Performance Indicators
 
 <img src= "https://hudl-content.s3.amazonaws.com/craft/_1200xAUTO_crop_center-center_none/Coding-HSC-Replay.png?mtime=20200114164751", align="middle", width="75%">
 
 .citation[Image source: Hudl]
+
+???
+- Vision is coded live or post hoc, for example, by pressing a button on a screen (typically known as a code window) each time an event happens. For example, kicks and handballs or shots on goal. 
+- The usual way of reporting on performance indicators for game sports is to use frequencies, or relative frequencies, of behavioural occurrences
+- These frequency counts provide summary statistics for parts of a match, for a single match, or for several matches aggregated. These types of descriptive statistics, however, do not contain information on the sequential context of the game (for example, what series of actions led to a specific shot on the goal), nor do they report on the situational context of the specific action (for example, was the observed behaviour produced from a fast break or from a static position)
+- There are different types of performance indicator used in performance analysis of sport ranging from timings measured on a ratio scale, to event types, playing areas, players involved and event outcomes that are measured on nominal scales. 
+-  With respect to observational measurements, as used in notational analysis, reliability is typically assessed using measures of intra- and inter-observer agreement
+- How reliable and stable are you, when you code a quarter or game, then how stable or reliable are you compared to someone else.
+- This can be calculated by coding a quarter or phase of play one week, the returning the next week and recoding the same piece of footage. Then comparing results with that from another person who completed their own coding
+
+---
+class: top, center
+# Notational Analysis & Performance Indicators
+
+<img src= "https://www.researchgate.net/profile/Martin-Lames/publication/233653583/figure/fig1/AS:858450355576834@1581681922567/The-coupling-of-competition-and-training-by-game-observation-as-a-three-step-process.png", align="middle", width="70%">
+
+.citation[Lames, M., & Hansen, G. (2001). Designing observational systems to support top-level teams in game sports. International journal of performance analysis in sport, 1(1), 83-90.]
+
+???
+- The usefulness of practical performance analysis lies in the amount of support that it provides to sports practice. This figure details The coupling of competition and training by game observation as a three-step process
+- The first step, a detailed description of competition behaviour is required using an appropriate observational system. The quality of this description depends on the reliability of the observation process and measurement consistency.
+- the second step, a diagnostic approach is used in which the information is analysed and cues detected for training purposes, particularly cues indicating weaknesses or strengths in performance. Requires more than just observational data. 
+- other factors include the individual circumstances such as tactics and strategy, as well as situational aspects such as the psychological, physical and cognitive processes that occur during a game, the quality of the opponent and the level of preparation of the players. An interpretive approach!
+- In the third step the results of the diagnosis must be transferred into practical considerations by identifying a list of possible objectives for training. The practical implementation of the interpretation from game observation thus requires a profound knowledge in training methodology as well as a detailed involvement in the training process under consideration
 
 ---
 class: top, center
@@ -363,6 +408,34 @@ class: top, center
 
 .citation[Image source: Kinetic]
 
+???
+- Is valid for accurately measuring peak velocity during lifts and can therefore be used to autoregulate load during strength-training based on athlete’s recovery level
+- concurrent validity and test-retest reliability of a linear position transducer (LPT) for the squat jump (SJ) and counter-movement jump (CMJ) height
+- Twenty-eight subjects (25.18 ± 7.1 years) performed three SJs followed by three CMJs using a force plate concurrently with the LPT to test validity. Subjects returned on a separate day, at least 48 h apart, to measure test-retest reliability.
+
+---
+
+class: top, center
+# Linear Position Transducers - SJ & CMJ
+
+<img src= "https://www.mdpi.com/sports/sports-06-00177/article_deploy/html/images/sports-06-00177-g002-550.jpg", align="middle", width="60%">
+
+???
+- Validity Results from the paired t-test showed a statistically significant difference between the force plate and GymAware for both SJ (95% CI: 7.52 cm to 8.50 cm; p < 0.001) and CMJ (95% CI: 8.18 cm to 9.18 cm; p < 0.001), while Bland–Altman tests revealed that the GymAware LPT overestimated the jump heights for both SJ (mean difference (MD): 8.01 ± 2.93 cm) and CMJ (MD: 8.68 ± 3.00 cm).
+- here we have the mean difference of vertical jump height obtained from the force plate compared to the GymAware LPT for (a) squat jump height and (b) counter-movement jump height. Each point corresponds to each of the 3 jumps from each subject from both days.
+
+--
+
+<img src= "https://www.mdpi.com/sports/sports-06-00177/article_deploy/html/images/sports-06-00177-g003-550.jpg", align="middle", width="60%">
+
+.citation[Wadhi et al., (2018)]
+
+???
+- Bland–Altman difference vs. average plots depicting vertical jump height obtained from GymAware LPT—force plate vs. average of GymAware LPT and force plate for (a) squat jump height and (b) counter-movement jump height. Each point corresponds to each of the 3 jumps from each subject from both days.
+- absolute vertical jump heights extrapolated from the GymAware need to be used with precaution. 
+- While it is difficult to pinpoint the exact reasoning for the inflated jump heights, it could be due to the overestimation of other jump performance metrics (i.e., power and velocity) demonstrated by LPTs
+- In conclusion, GymAware overestimates vertical jump height not just in athletes (e.g., female volleyball athletes), but also in a more heterogeneous population
+
 ---
 class: top, center
 # Power Meters
@@ -370,6 +443,61 @@ class: top, center
 <img src= "https://www.sram.com/globalassets/image-hierarchy/sram-product-root-images/power-meters/power-meters/pm-force-d1/4835sidel.jpg", align="middle", width="85%">
 
 .citation[Image source: SRAM]
+
+???
+- Power is equal to work over time. power is a direct means of measuring intensity, which is considered by many to be the most important variable in a successful training program
+- The use of power meters enables the assessment of cyclists’ training and racing intensity zones according to their skills and thus to their race performance profile
+- These data enable the coach and athlete to have measurements of intensity in real cycling locomotion in the field, thus allowing training programs to be developed using power output
+- The SRM power meter (pictured) is the most commonly used system in cycling, particularly in professional and amateur racing.
+- The SRM system is a crankset that includes a number of strain gauges (4-20 depending on the model used) located between the crank axle and the chainring. The SRM is considered as a gold standard measurement system due to its high validity, reliability and sensitivity during the measure (± 1% average error after calibration procedure performed under standard environmental conditions). This 1% average error represents changes in power output measurements of 2 W in endurance (200 W) and 20 W during sprints (2000 W)
+- However, how cost and requires mounting on on your bike
+
+---
+class: top, center
+# Power Meters
+
+<img src= "https://www.velonews.com/wp-content/uploads/sites/5/2018/06/5P5A5615.jpg", align="middle", width="65%">
+
+.citation[Image source: Velonews]
+
+???
+- The Powertap (PWT, Saris Cycling Group, Madison, USA) is also considered a valid and reliable power meter when compared with the SRM4 or a dynamic calibration rig
+- The PWT device measures the PO with strain gauges located in the hub of the rear wheel
+
+---
+class: top, center
+# Power Meters
+
+<img src= "https://30geqe1ofsyn2b4c79ue9eya-wpengine.netdna-ssl.com/us/wp-content/uploads/sites/2/2018/12/1442x1030bluelogo_0003_IMG_4356-2.jpg", align="middle", width="65%">
+
+.citation[Image source: Stages Cycling]
+
+???
+This power meter uses only the left crank arm for the measurement of power output. The strain gauges are integrated into a small plastic case bonded to the rear side of the left crank arm. As the crank measures the PO on the left side only, the algorithm for power calculation doubles this value to obtain a complete reading for both the left and right sides.
+
+---
+class: top, center
+# Power Meters
+
+<img src= "https://keyassets.timeincuk.net/inspirewp/live/wp-content/uploads/sites/2/2018/11/Garmin-Vector-3-002_152848802_247633552_174932732_265846422-e1568362091807.jpg", align="middle", width="65%">
+
+.citation[Image source: Cycling Weekly]
+
+???
+- In the Garmin Vector power meter, PO is measured at the pedals where force is applied. The vector power meter measures the slight deflection of the pedal spindle though the entire pedal stroke as well as the 2D force vectors; these data are used to calculate power. The force sensors are housed in both pedals, so that they can independently measure power from each leg and report the total power output considering the balance between both left and right legs
+
+---
+class: top, center
+
+<img src= "https://www.researchgate.net/profile/Anthony-Bouillod/publication/311664675/figure/fig1/AS:440563846651904@1482050015025/Bland-Altman-plots-of-the-differences-between-a-POSRM-and-POPWT-b-POSRM-and-POSTG-and.png", align="middle", width="50%">
+
+.citation[Bouillod, A., Pinot, J., Soto-Romero, G., Bertucci, W., & Grappe, F. (2017). Validity, sensitivity, reproducibility, and robustness of the PowerTap, Stages, and Garmin Vector power meters in comparison with the SRM device. International Journal of Sports Physiology and Performance, 12(8), 1023-1030.]
+
+???
+- Bland-Altman plots of the differences between a) POSRM and Power Tap, b) POSRM and Stages and c) POSRM and Garmin Vector power meters during the sub-maximal incremental test. The dashed line represents the mean bias whereas the solid lines represent the high and low 95% confidence interval (CI).
+- The powertap power meter can be considered a suitable device for PO measurement during cycling. The stages and vector should be treated with some caution given the presence of significant differences when they are compared with the SRM device
+- The use of accurate devices such as SRM and PWT is required for coaches and scientists to enable the assessment of cyclists’ intensity zones and to establish a long-term power profile of individual performance
+
 
 ---
 class: top, center
@@ -401,6 +529,38 @@ class: top, center
 
 ]
 ]
+
+---
+class: top, left
+.center[
+# Tips for Analysing Research Articles on Technologies
+]
+
+* Is validity and reliability (of the exact make/ model) described in the paper?
+
+--
+
+* Who are the participants (and their respective skill level) in validity and reliability studies?
+
+--
+
+* Has the raw data been examined? Or is it an average? A rolling average?
+
+--
+
+* How feasible is the tool/ technology for a practical setting?
+
+--
+
+.center[
+### Any other tips?
+]
+
+.can-edit.key-tips[
+
+]
+
+
 
 ---
 class: top, right, inverse
